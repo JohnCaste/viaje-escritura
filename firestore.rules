@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Solo estas dos cuentas (con correo verificado) pueden entrar.
+    function permitido() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() in ['tucorreo@gmail.com', 'correo.de.ella@gmail.com'];
+    }
+
+    // Un documento por persona: cada quien ve el de ambos, pero solo escribe el suyo.
+    match /lectores/{uid} {
+      allow read: if permitido();
+      allow write: if permitido() && request.auth.uid == uid;
+    }
+  }
+}
