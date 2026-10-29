@@ -1,5 +1,5 @@
 // Sube la versión cada vez que publiques cambios para que los teléfonos tomen la nueva.
-const CACHE = 'viaje-v1';
+const CACHE = 'viaje-v2';
 const BASE = [
   './', 'index.html', 'app.js', 'config.js', 'styles.css', 'plan.json', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png',

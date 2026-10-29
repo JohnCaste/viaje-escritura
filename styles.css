@@ -1,40 +1,40 @@
 :root {
-  --fondo: #f6f1e7;
-  --tarjeta: #fffdf8;
-  --texto: #2a2622;
-  --tenue: #7a7067;
-  --linea: #e6ddcd;
-  --acento: #1f5f5b;
-  --acento-suave: #dcebe8;
+  --fondo: #fbf2f5;
+  --tarjeta: #fffafc;
+  --texto: #3a2630;
+  --tenue: #8a6f7b;
+  --linea: #f1dce4;
+  --acento: #c2457a;
+  --acento-suave: #fbe1eb;
   --sobre-acento: #ffffff;
-  --oro: #b7852c;
-  --alerta: #fbeed6;
-  --n0: #ece4d6;
-  --n1: #c6dfda;
-  --n2: #8fc0b8;
-  --n3: #4f938a;
-  --n4: #1f5f5b;
-  --sombra: 0 1px 2px rgb(60 40 20 / 6%), 0 4px 16px rgb(60 40 20 / 5%);
+  --oro: #9c5b9e;
+  --alerta: #fde6dc;
+  --n0: #f3e4ea;
+  --n1: #f7cddc;
+  --n2: #ec9fbd;
+  --n3: #d96c98;
+  --n4: #c2457a;
+  --sombra: 0 1px 2px rgb(120 30 70 / 6%), 0 4px 16px rgb(120 30 70 / 6%);
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fondo: #14181f;
-    --tarjeta: #1c222b;
-    --texto: #ece6dc;
-    --tenue: #9a948b;
-    --linea: #2c343f;
-    --acento: #6cc2b6;
-    --acento-suave: #1f3a39;
-    --sobre-acento: #0f1a1a;
-    --oro: #d9ad5b;
-    --alerta: #3a3020;
-    --n0: #262d37;
-    --n1: #234541;
-    --n2: #2f6a63;
-    --n3: #4a9a90;
-    --n4: #6cc2b6;
+    --fondo: #1c1418;
+    --tarjeta: #271b21;
+    --texto: #f5e6ec;
+    --tenue: #a98f9a;
+    --linea: #3b2a33;
+    --acento: #f28db5;
+    --acento-suave: #4a2436;
+    --sobre-acento: #2a0e1b;
+    --oro: #d7a8e0;
+    --alerta: #45302b;
+    --n0: #33242c;
+    --n1: #5b2b41;
+    --n2: #8b3d60;
+    --n3: #c55e8b;
+    --n4: #f28db5;
     --sombra: none;
     color-scheme: dark;
   }

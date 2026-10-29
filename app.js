@@ -101,7 +101,7 @@ function render() {
   const foco = document.activeElement?.id === 'nota';
   const vistas = { hoy: vistaHoy, juntos: vistaJuntos, plan: vistaPlan };
   $app.innerHTML = `
-    ${estado.demo ? '<div class="banner">Modo demostración: Firebase aún no está conectado y lo que marques se queda en este dispositivo.</div>' : ''}
+    ${estado.demo && !new URLSearchParams(location.search).has('demo') ? '<div class="banner">Modo demostración: Firebase aún no está conectado y lo que marques se queda en este dispositivo.</div>' : ''}
     <header class="cabecera"><p class="eyebrow">${esc(estado.plan.subtitulo)}</p><h1>${esc(estado.plan.titulo)}</h1></header>
     <main>${(vistas[estado.vista] || vistaHoy)(n)}</main>
     <nav class="pestanas">${Object.entries(NOMBRE_VISTA).map(([v, t]) =>
@@ -415,17 +415,19 @@ async function iniciarFirebase() {
 
 /* ---------- Backend: demostración (sin Firebase) ---------- */
 
-function iniciarDemo() {
+/** `?demo=Ana,Luis` fuerza la demostración con esos dos nombres (útil para capturas). */
+function iniciarDemo(nombres = []) {
+  const [nombreYo = 'Yo', nombreOtro = 'Tu amiga'] = nombres;
   let datos;
   try { datos = JSON.parse(leer('demo')); } catch { datos = null; }
   datos ||= {
-    yo: { uid: 'yo', nombre: 'Yo', leidos: {}, notas: {} },
-    amiga: { uid: 'amiga', nombre: 'Tu amiga', leidos: { 1: '2026-10-29', 2: '2026-10-30', 3: '2026-10-31' },
+    yo: { uid: 'yo', nombre: nombreYo, leidos: {}, notas: {} },
+    amiga: { uid: 'amiga', nombre: nombreOtro, leidos: { 1: '2026-10-29', 2: '2026-10-30', 3: '2026-10-31' },
       notas: { 1: 'Me encantó empezar con la genealogía: Dios cumple sus promesas.' } },
   };
   const publicar = () => { escribir('demo', JSON.stringify(datos)); estado.lectores = { ...datos }; render(); };
   estado.demo = true;
-  estado.yo = { uid: 'yo', nombre: 'Yo' };
+  estado.yo = { uid: 'yo', nombre: nombreYo };
   backend = {
     guardar(cambios) {
       for (const [campo, valor] of Object.entries(cambios)) {
@@ -452,7 +454,13 @@ function iniciarDemo() {
     return;
   }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
-  if (!firebaseConfig.apiKey || firebaseConfig.apiKey.startsWith('PEGA')) { iniciarDemo(); return; }
+  const params = new URLSearchParams(location.search);
+  if (NOMBRE_VISTA[params.get('vista')]) estado.vista = params.get('vista');
+  if (params.has('acceso')) { pantallaAcceso(); return; } // solo para la captura de la guía
+  if (params.has('demo') || !firebaseConfig.apiKey || firebaseConfig.apiKey.startsWith('PEGA')) {
+    iniciarDemo((params.get('demo') || '').split(',').filter(Boolean));
+    return;
+  }
   try {
     await iniciarFirebase();
   } catch (err) {

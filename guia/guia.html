@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Guía · Un viaje por la Escritura</title>
+<style>
+  @page { size: letter; margin: 0; }
+  :root {
+    --fondo: #fbf2f5; --tarjeta: #fffafc; --texto: #3a2630; --tenue: #8a6f7b;
+    --linea: #f1dce4; --acento: #c2457a; --suave: #fbe1eb; --malva: #9c5b9e;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { margin: 0; color: var(--texto); font: 11.5pt/1.5 "Segoe UI", -apple-system, sans-serif; background: #fff; }
+  h1, h2, h3 { font-family: "Palatino Linotype", "Iowan Old Style", Georgia, serif; font-weight: 600; margin: 0; }
+  .pagina { width: 8.5in; height: 11in; padding: .65in .7in; position: relative; overflow: hidden; page-break-after: always; }
+  .pagina:last-child { page-break-after: auto; }
+  .pie { position: absolute; bottom: .4in; left: .7in; right: .7in; display: flex; justify-content: space-between; font-size: 9pt; color: var(--tenue); }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: 8.5pt; color: var(--malva); font-weight: 700; margin: 0 0 4px; }
+  h2 { font-size: 22pt; margin-bottom: 6px; }
+  h3 { font-size: 13.5pt; margin: 14px 0 4px; }
+  p { margin: 5px 0; }
+  .intro { color: var(--tenue); font-size: 12pt; margin-bottom: 18px; }
+
+  /* Portada */
+  .portada { background: var(--fondo); display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .portada .icono { width: 1.5in; height: 1.5in; border-radius: .34in; margin: 0 auto 26px; box-shadow: 0 8px 30px rgb(194 69 122 / 25%); }
+  .portada h1 { font-size: 36pt; line-height: 1.1; }
+  .portada .sub { font-size: 14pt; color: var(--tenue); margin-top: 10px; }
+  .portada .para { margin: 40px auto 0; max-width: 4.8in; background: var(--tarjeta); border: 1px solid var(--linea); border-radius: 18px; padding: 20px 26px; font-size: 12pt; }
+  .portada .url { display: inline-block; margin-top: 10px; background: var(--acento); color: #fff; padding: 8px 18px; border-radius: 999px; font-weight: 600; text-decoration: none; }
+
+  /* Pasos */
+  .pasos { list-style: none; padding: 0; margin: 0; counter-reset: paso; }
+  .pasos li { counter-increment: paso; position: relative; padding: 0 0 14px 46px; }
+  .pasos li::before {
+    content: counter(paso); position: absolute; left: 0; top: -2px; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--acento); color: #fff; font-weight: 700; display: grid; place-items: center;
+  }
+  .pasos strong { color: var(--texto); }
+  .ios { display: inline-block; vertical-align: -4px; width: 18px; height: 18px; }
+
+  /* Columnas con teléfono */
+  .dos { display: grid; grid-template-columns: 2.55in 1fr; gap: .4in; align-items: start; }
+  .dos.inversa { grid-template-columns: 1fr 2.55in; }
+  .compacta .dos { grid-template-columns: 2.05in 1fr; }
+  .compacta .dos.inversa { grid-template-columns: 1fr 2.05in; }
+  .compacta .telefono { width: 2.05in; }
+  .telefono { width: 2.55in; border-radius: .3in; border: 7px solid #3a2630; overflow: hidden; background: var(--fondo); box-shadow: 0 10px 30px rgb(58 38 48 / 18%); }
+  .telefono img { display: block; width: 100%; }
+
+  .nota { background: var(--suave); border-radius: 14px; padding: 12px 16px; margin: 14px 0; }
+  .nota strong { color: var(--acento); }
+  .caja { background: var(--fondo); border: 1px solid var(--linea); border-radius: 14px; padding: 12px 16px; margin: 10px 0; }
+  .partes { list-style: none; padding: 0; margin: 8px 0; }
+  .partes li { padding: 7px 0; border-top: 1px solid var(--linea); }
+  .partes li:first-child { border-top: 0; }
+  .partes b { color: var(--acento); }
+  .chip { display: inline-block; padding: 1px 9px; border-radius: 999px; background: var(--suave); color: var(--acento); font-weight: 600; font-size: 10pt; }
+  .boton { display: inline-block; padding: 1px 10px; border-radius: 8px; background: var(--acento); color: #fff; font-weight: 600; font-size: 10pt; }
+  .punto { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 50%; background: var(--malva); color: #fff; font-size: 8pt; font-weight: 700; vertical-align: -3px; }
+  .problemas h3 { font-size: 12pt; margin-top: 12px; color: var(--acento); }
+  .cierre { text-align: center; margin-top: 26px; font-family: "Palatino Linotype", Georgia, serif; font-style: italic; font-size: 13pt; color: var(--malva); }
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<section class="pagina portada">
+  <img class="icono" src="../icons/icon-512.png" alt="">
+  <p class="eyebrow">Una sola historia</p>
+  <h1>Un viaje por la Escritura</h1>
+  <p class="sub">Guía para leer juntos · 29 de octubre de 2026 – 23 de octubre de 2027</p>
+  <div class="para">
+    <p>Una lectura de 10 a 15 minutos al día, 360 días en total. Cada quien marca lo que lee y los dos vemos nuestro avance y lo que nos habló la Palabra.</p>
+    <a class="url" href="https://johncaste.github.io/viaje-escritura/">johncaste.github.io/viaje-escritura</a>
+  </div>
+  <div class="pie"><span>Un viaje por la Escritura</span><span>1</span></div>
+</section>
+
+<!-- 2. Instalar y entrar -->
+<section class="pagina">
+  <p class="eyebrow">Paso 1</p>
+  <h2>Instálala en tu iPhone</h2>
+  <p class="intro">No está en la App Store, pero se instala desde Safari y queda en tu pantalla de inicio con su ícono, igual que cualquier app.</p>
+
+  <ol class="pasos">
+    <li>Abre <strong>Safari</strong>, que tiene que ser Safari y no Chrome, y entra a <strong>johncaste.github.io/viaje-escritura</strong>.</li>
+    <li>Toca el botón <strong>Compartir</strong>
+      <svg class="ios" viewBox="0 0 24 24" fill="none" stroke="#c2457a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7.5 7.5 12 3l4.5 4.5"/><path d="M8 11H6a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-2"/></svg>
+      (el cuadrito con la flecha hacia arriba, abajo en la pantalla).</li>
+    <li>Desliza hacia abajo y elige <strong>Agregar a pantalla de inicio</strong>, luego <strong>Agregar</strong>.</li>
+    <li>Cierra Safari y abre <strong>Viaje</strong> desde el ícono rosa que apareció en tu pantalla de inicio. Usa siempre ese ícono.</li>
+  </ol>
+
+  <div class="dos" style="margin-top:10px">
+    <div class="telefono"><img src="img/acceso.png" alt="Pantalla para entrar"></div>
+    <div>
+      <p class="eyebrow">Paso 2</p>
+      <h2>Entra con tu correo</h2>
+      <p>Solo pueden entrar dos cuentas: la tuya y la mía. Usa tu correo de Gmail, el mismo que me diste.</p>
+
+      <h3>Opción A · Con Google</h3>
+      <p>Toca <span class="boton">Entrar con Google</span> y elige tu cuenta. Es la más rápida.</p>
+
+      <h3>Opción B · Con correo y contraseña</h3>
+      <p>Úsala si la ventana de Google no abre o se queda en blanco, algo que a veces pasa en el iPhone.</p>
+      <ol class="pasos" style="margin-top:8px">
+        <li>Escribe tu correo y una contraseña nueva (mínimo 6 caracteres) y toca <strong>Crear cuenta</strong>.</li>
+        <li>Te llegará un correo de confirmación. Ábrelo y toca el enlace. Revisa también la carpeta de spam.</li>
+        <li>Vuelve a la app y toca <strong>Ya confirmé mi correo</strong>.</li>
+      </ol>
+      <p style="color:var(--tenue);font-size:10pt">Las siguientes veces solo tocas <strong>Entrar</strong>, porque la app recuerda tu sesión.</p>
+    </div>
+  </div>
+  <div class="pie"><span>Instalar y entrar</span><span>2</span></div>
+</section>
+
+<!-- 3. Hoy -->
+<section class="pagina">
+  <p class="eyebrow">Todos los días</p>
+  <h2>La pestaña Hoy</h2>
+  <p class="intro">Es lo primero que ves al abrir la app: la lectura que toca hoy, según la fecha de tu teléfono.</p>
+  <div class="dos">
+    <div class="telefono"><img src="img/hoy.png" alt="Pantalla Hoy"></div>
+    <div>
+      <ul class="partes">
+        <li><b>Día y fecha.</b> Con las flechas ‹ › puedes ver otros días. Si te mueves, aparece “Volver a hoy”.</li>
+        <li><b>Las lecturas.</b> Toca cada una (por ejemplo, “Mateo 1-3”) y se abre el pasaje en Bible Gateway, en la versión que elijas.</li>
+        <li><b>Enfocar.</b> Una palabra para guiar la lectura. Léela antes de empezar y piensa al final dónde la viste en el texto.</li>
+        <li><b>Ya leí.</b> Tócalo al terminar y cambiará a <span class="chip">✓ Leído</span>. Si te equivocas, tócalo otra vez para desmarcar.</li>
+        <li><b>Quién ya leyó.</b> Debajo del botón ves si ya leímos los dos o a quién le falta.</li>
+        <li><b>Lo que nos habló.</b> Escribe una nota de la lectura y toca <strong>Guardar nota</strong>. Yo la veo y tú ves la mía, cada una en su día.</li>
+        <li><b>Más abajo</b> están el objetivo de la semana y la pregunta guía de la temporada.</li>
+      </ul>
+      <div class="nota"><strong>Si te atrasas</strong>, aparece un aviso con cuántas lecturas te faltan. Tócalo para verlas en una lista.</div>
+    </div>
+  </div>
+  <div class="pie"><span>La pestaña Hoy</span><span>3</span></div>
+</section>
+
+<!-- 4. Juntos y Plan -->
+<section class="pagina compacta">
+  <div class="dos inversa">
+    <div>
+      <p class="eyebrow">Nuestro avance</p>
+      <h2>La pestaña Juntos</h2>
+      <p class="intro" style="margin-bottom:8px">Aquí vemos cómo vamos cada uno.</p>
+      <ul class="partes">
+        <li><b>Porcentaje</b> del plan completo (360 lecturas).</li>
+        <li><b>Leídos:</b> cuántas lecturas llevas marcadas.</li>
+        <li><b>Racha:</b> cuántos días seguidos llevas al día. El día de hoy no cuenta en contra mientras no termine.</li>
+        <li><b>Atrasados:</b> lecturas de días pasados que aún no marcas.</li>
+        <li><b>Las 52 semanas:</b> cada cuadro es una semana del plan, y entre más rosa, más al día. Los cuadros punteados son semanas que aún no llegan.</li>
+      </ul>
+    </div>
+    <div class="telefono"><img src="img/juntos.png" alt="Pantalla Juntos"></div>
+  </div>
+
+  <div class="dos" style="margin-top:.25in">
+    <div class="telefono"><img src="img/plan.png" alt="Pantalla Plan"></div>
+    <div>
+      <p class="eyebrow">El mapa completo</p>
+      <h2>La pestaña Plan</h2>
+      <ul class="partes">
+        <li><b>Temporadas.</b> Son las 10 etapas del viaje. Empieza en el Evangelio, porque todo comienza en Cristo. Toca una para abrirla.</li>
+        <li><b>Casilla</b> a la izquierda: marca o desmarca ese día.</li>
+        <li><b>Punto</b> <span class="punto">J</span> a la derecha: ya leí ese día. Si está punteado, todavía no.</li>
+        <li><b>Toca el texto</b> de un día para abrirlo en Hoy.</li>
+        <li><b>Mis pendientes</b> muestra solo lo que te falta.</li>
+        <li><b>Ajustes</b> (al final): elige la <strong>versión de la Biblia</strong> (RVR1960, NVI, NTV, LBLA, DHH o TLA) o cierra sesión.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pie"><span>Juntos y Plan</span><span>4</span></div>
+</section>
+
+<!-- 5. Consejos y problemas -->
+<section class="pagina">
+  <p class="eyebrow">Para el camino</p>
+  <h2>Consejos</h2>
+  <div class="caja"><strong>Si te atrasas, retoma.</strong> No intentes ponerte al corriente leyendo todo de golpe. Lee la lectura del día y recupera las pendientes poco a poco.</div>
+  <div class="caja"><strong>Funciona sin internet.</strong> Puedes marcar lecturas y escribir notas sin conexión, y se suben solas cuando vuelve la señal. Eso sí, para abrir el pasaje en Bible Gateway necesitas internet.</div>
+  <div class="caja"><strong>Tus notas las vemos los dos.</strong> Nadie más puede entrar a la app ni ver lo que escribimos.</div>
+
+  <div class="problemas">
+    <h2 style="margin-top:22px">Si algo no funciona</h2>
+    <h3>La ventana de Google se queda en blanco o no abre</h3>
+    <p>Usa la opción de correo y contraseña (Opción B de la página 2).</p>
+    <h3>Dice “La cuenta … no tiene acceso a este plan”</h3>
+    <p>Entraste con otro correo. Toca <strong>Usar otra cuenta</strong> y entra con el correo que me diste.</p>
+    <h3>No me llegó el correo de confirmación</h3>
+    <p>Revisa spam y promociones. Si no aparece, vuelve a intentar con <strong>Entrar</strong> usando el mismo correo y contraseña, o avísame.</p>
+    <h3>No veo lo que marcó el otro</h3>
+    <p>Revisa que tengas internet, cierra la app por completo (desliza hacia arriba) y ábrela de nuevo.</p>
+    <h3>La app se ve diferente después de una actualización</h3>
+    <p>Es normal. Cuando cambio algo, se actualiza sola al abrirla un par de veces.</p>
+  </div>
+
+  <p class="cierre">“Que este viaje no termine solo con una Biblia recorrida,<br>sino con una fe más consciente.”</p>
+  <div class="pie"><span>Consejos y ayuda</span><span>5</span></div>
+</section>
+
+</body>
+</html>
