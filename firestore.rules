@@ -5,7 +5,7 @@ service cloud.firestore {
     function permitido() {
       return request.auth != null
         && request.auth.token.email_verified == true
-        && request.auth.token.email.lower() in ['tucorreo@gmail.com', 'correo.de.ella@gmail.com'];
+        && request.auth.token.email.lower() in ['johncastehdez@gmail.com', 'floresdanna496@gmail.com'];
     }
 
     // Un documento por persona: cada quien ve el de ambos, pero solo escribe el suyo.
